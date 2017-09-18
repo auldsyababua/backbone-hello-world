@@ -26,14 +26,14 @@
         // el - stands for element. Every view has an element associate where HTML
         //      content will be rendered.
         el: '#container',
-        // This is the first function called when this view is instantiated.
+        // template which has the placeholder 'who' to be substitute later
+        template: _.template("<h3>Hello <%= who %></h3>"),
         initialize: function(){
           this.render();
         },
-        // $el - it's a cached jQuery object (el), in which you can use jQuery functions
-        //       to push content. Like the Hello World in this case.
         render: function(){
-          this.$el.html("Hello World");
+          // render the function using substituting the varible 'who' for 'world!'. You can input anything you want though.
+          this.$el.html(this.template({who: 'Colin!'}));
         }
     });
     // if the new AppView() is not instantiated here, your #container will load "Loading..." instead of "Hello World".
